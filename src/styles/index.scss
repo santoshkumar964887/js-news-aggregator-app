@@ -1,9 +1,12 @@
 
 body {
-  background-color:rgba(64,64,64,0.9); }
+  background-color:rgba(64,64,64,0.9);
+  font-family: 'Caveat';
+}
   .article:hover{
     opacity: 0.8;
     transform: scale(1.07);
+
     
   }
   .article{
