@@ -1,12 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>webpack starterkit</title>
-</head>
-<body>
-  <h1>webpack starter</h1>
-  <p>✨ A lightweight foundation for your next webpack based frontend project.</p>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>webpack starterkit</title>
+    <link rel="stylesheet" href="/src/styles/index.css" />
+  </head>
+  <body>
+    <header>
+      <center>
+        <h3 class="h3news">
+          NEWS AGGREGATOR
+        </h3>
+      </center>
+    </header>
+    <div class="divtext">
+      <input
+        type="text"
+        id="search"
+        placeholder="Type and press enter to search"
+        class="input1"
+        onchange="show()"
+      />
+    </div>
+    <div id="div1"></div>
+
+    <script>
+      var url = "";
+      var url =
+        "http://newsapi.org/v2/top-headlines?" +
+        "country=in&" +
+        "apiKey=410d12d7c9d246dfb81567c33b6deaaf";
+     
+      
+
+      var ul = document.createElement("ul");
+      ul.id = "news-articles";
+      let div1 = document.querySelector("#div1");
+      div1.appendChild(ul);
+
+      var req = new Request(url);
+      
+      async function getUserAsync() {
+        let response = await fetch(req);
+        let data = await response.json();
+        return data;
+      } 
+      getUserAsync("yourUsernameHere").then(data => {
+        console.log(data.articles.length);
+        function fun() {
+          let i = 0;
+          for (i; i < data.articles.length; i++) {
+            var li = document.createElement("li");
+            li.className = "article";
+            ul.appendChild(li);
+            var img = document.createElement("img");
+            img.className = "article-img";
+            img.setAttribute("src", data.articles[i].urlToImage);
+            li.appendChild(img);
+            var h2 = document.createElement("h2");
+            h2.innerHTML = data.articles[i].title;
+            h2.className = "article-title";
+            li.appendChild(h2);
+            var p = document.createElement("p");
+            p.innerHTML = data.articles[i].description;
+            p.className = "article-description";
+            li.appendChild(p);
+            var a = document.createElement("a");
+            a.setAttribute("href", data.articles[i].url);
+            a.className = "article-link";
+            li.appendChild(a);
+            var span = document.createElement("span");
+            span.innerHTML = data.articles[i].author;
+            span.className = "article-author";
+            a.appendChild(span);
+
+            li.style.cssText =
+              "width:290px;margin:15px;color:white; background-color:rgb(96,96,96);";
+            img.style.cssText =
+              "width:240px;height:auto;margin:20px 0px 0px 20px;";
+            h2.style.cssText = "padding:10px 20px 10px 20px;";
+            p.style.cssText = "padding:0px 20px 10px 20px;";
+            a.style.cssText =
+              "float:right;padding:0px 20px 20px 0px; text-decoration:none; position:relative; bottom:0px; color:blue; font-weight:600;";
+          }
+          ul.style.cssText =
+            "list-Style:none;display:flex; flex-wrap:wrap;padding:20px;justify-content:center; ";
+
+          console.log(data.articles);
+        }
+      
+        fun();
+      
+      });
+      
+      function show() {
+        var search = document.querySelector("#search");
+        var every = search.value;
+
+        url =
+          "http://newsapi.org/v2/" +
+          every +
+          "?q=bitcoin&apiKey=410d12d7c9d246dfb81567c33b6deaaf";
+          console.log(url)
+          
+      }
+    </script>
+  </body>
 </html>
