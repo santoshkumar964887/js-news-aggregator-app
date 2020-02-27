@@ -139,22 +139,23 @@
             var li = document.createElement("li");
             li.className = "article";
             ul.appendChild(li);
-            var img = document.createElement("img");
-            img.className = "article-img";
-            img.setAttribute("src", data.articles[i].urlToImage);
-            li.appendChild(img);
-            var h2 = document.createElement("h2");
-            h2.innerHTML = data.articles[i].title;
-            h2.className = "article-title";
-            li.appendChild(h2);
-            var p = document.createElement("p");
-            p.innerHTML = data.articles[i].description;
-            p.className = "article-description";
-            li.appendChild(p);
             var a = document.createElement("a");
             a.setAttribute("href", data.articles[i].url);
             a.className = "article-link";
             li.appendChild(a);
+            var img = document.createElement("img");
+            img.className = "article-img";
+            img.setAttribute("src", data.articles[i].urlToImage);
+            a.appendChild(img);
+            var h2 = document.createElement("h2");
+            h2.innerHTML = data.articles[i].title;
+            h2.className = "article-title";
+            a.appendChild(h2);
+            var p = document.createElement("p");
+            p.innerHTML = data.articles[i].description;
+            p.className = "article-description";
+            a.appendChild(p);
+           
             var span = document.createElement("span");
             span.innerHTML = data.articles[i].author;
             span.className = "article-author";
@@ -166,8 +167,10 @@
               "width:240px;height:auto;margin:20px 0px 0px 20px;";
             h2.style.cssText = "padding:10px 20px 10px 20px;";
             p.style.cssText = "padding:0px 20px 10px 20px;";
-            a.style.cssText =
+            span.style.cssText =
               "float:right;padding:0px 20px 20px 0px; text-decoration:none; position:relative; bottom:0px; color:blue; font-weight:600;";
+              a.style.cssText =
+              "float:right;padding:0px 20px 20px 0px; text-decoration:none; position:relative; bottom:0px; color:white; font-weight:600;";
           }
           ul.style.cssText =
             "list-Style:none;display:flex; flex-wrap:wrap;padding:20px;justify-content:center; ";
