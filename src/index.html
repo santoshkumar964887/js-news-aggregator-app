@@ -19,7 +19,7 @@
       <input
         type="text"
         id="search"
-        placeholder="Type and pre... to search..."
+        placeholder="Type and press enter to search..."
         class="input1"
         onchange="show()"
       />
@@ -50,7 +50,7 @@
         return data;
       } 
       getUserAsync("yourUsernameHere").then(data => {
-        console.log(data.articles.length);
+        
         function fun() {
           let i = 0;
           for (i; i < data.articles.length; i++) {
@@ -94,7 +94,7 @@
           ul.style.cssText =
             "list-Style:none;display:flex; flex-wrap:wrap;padding:20px;justify-content:center; ";
 
-          console.log(data.articles);
+        
         }
       
         fun();
@@ -124,7 +124,8 @@
       
 
       getUserAsync("yourUsernameHere").then(data => {
-        console.log(data.articles.length);
+        
+        
         if (data.articles.length<1){
           var h3=document.createElement("h1");
           h3.className="not-found";
@@ -171,7 +172,7 @@
           ul.style.cssText =
             "list-Style:none;display:flex; flex-wrap:wrap;padding:20px;justify-content:center; ";
 
-          console.log(data.articles);
+          
         }
       
         fun();
