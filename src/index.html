@@ -19,7 +19,7 @@
       <input
         type="text"
         id="search"
-        placeholder="Type and press enter to search... "
+        placeholder="Type and pre... to search..."
         class="input1"
         onchange="show()"
       />
@@ -111,7 +111,7 @@
           '&from=2020-02-24&' +
           'sortBy=popularity&' +
           'apiKey=410d12d7c9d246dfb81567c33b6deaaf';
-          console.log(url);
+          
           
           var req = new Request(url);
 
@@ -125,6 +125,13 @@
 
       getUserAsync("yourUsernameHere").then(data => {
         console.log(data.articles.length);
+        if (data.articles.length<1){
+          var h3=document.createElement("h1");
+          h3.className="not-found";
+          h3.innerHTML='No article was found based on the search.'
+          ul.appendChild(h3);
+
+        }
         function fun() {
           let i = 0;
           for (i; i < data.articles.length; i++) {
