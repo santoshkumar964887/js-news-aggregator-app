@@ -22,9 +22,11 @@
         placeholder="Type and press enter to search..."
         class="input1"
         onchange="show()"
+        
       />
     </div>
     <div id="div1">
+
 
     </div>
 
@@ -34,6 +36,7 @@
         "http://newsapi.org/v2/top-headlines?" +
         "country=in&" +
         "apiKey=410d12d7c9d246dfb81567c33b6deaaf";
+        
      
       
 
@@ -49,7 +52,7 @@
         let data = await response.json();
         return data;
       } 
-      getUserAsync("yourUsernameHere").then(data => {
+      getUserAsync().then(data => {
         
         function fun() {
           let i = 0;
@@ -100,17 +103,23 @@
         fun();
       
       });
+
+
+
+
+
+
+
+
+      
       
       function show() {
         document.querySelector('#news-articles').innerHTML=""
         var search = document.querySelector("#search");
         var every = search.value;
+        
 
-       url = 'http://newsapi.org/v2/everything?' +
-          'q='+every +
-          '&from=2020-02-24&' +
-          'sortBy=popularity&' +
-          'apiKey=410d12d7c9d246dfb81567c33b6deaaf';
+       url = "http://newsapi.org/v2/everything?q="+every +"&from=2020-07-20&sortBy=publishedAt&apiKey=410d12d7c9d246dfb81567c33b6deaaf";
           
           
           var req = new Request(url);
