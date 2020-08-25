@@ -32,10 +32,9 @@
 
     <script>
       
-      var url =
-        "http://newsapi.org/v2/top-headlines?" +
-        "country=in&" +
-        "apiKey=410d12d7c9d246dfb81567c33b6deaaf";
+      var url ='http://newsapi.org/v2/top-headlines?' +
+          'country=in&' +
+          'apiKey=6cc304c5967a41aeaee6b189623f461b';
         
      
       
@@ -119,7 +118,8 @@
         var every = search.value;
         
 
-       url = "http://newsapi.org/v2/everything?q="+every +"&from=2020-07-20&sortBy=publishedAt&apiKey=410d12d7c9d246dfb81567c33b6deaaf";
+       url = "http://newsapi.org/v2/everything?q="+every+"&from=2020-08-25&sortBy=popularity&apiKey=6cc304c5967a41aeaee6b189623f461b";
+  
           
           
           var req = new Request(url);
@@ -128,6 +128,8 @@
           async function getUserAsync() {
         let response = await fetch(req);
         let data = await response.json();
+        console.log(url);
+        console.log(every);
         return data;
       } 
       
